@@ -26,7 +26,7 @@ ENV PATH="/venv/bin:$PATH"
 
 
 WORKDIR /workspace
-VOlUME ["/workspace"]
+VOLUME ["/workspace"]
 
 
-CMD ["/workspace/build/release/mandelbrot_par && python3 /workspace/plot2.py"]
+CMD ["bash", "-c", "/workspace/build/release/mandelbrot_par && python3 /workspace/plot2.py"]

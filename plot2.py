@@ -5,7 +5,7 @@ import csv
 G_values = []
 times = []
 
-with open('build/release/results.csv', 'r') as file:
+with open('results.csv', 'r') as file:
     reader = csv.reader(file)
     next(reader)  # Skip header
     for row in reader:
