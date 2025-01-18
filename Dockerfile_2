@@ -3,9 +3,6 @@ FROM ubuntu:24.04
 
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
-    cmake \
-    g++ \
-    make \
     libtbb-dev \
     libsfml-dev \
     imagemagick \
@@ -25,3 +22,11 @@ RUN python3 -m venv /venv && \
 
 # Add the virtual environment's bin directory to PATH
 ENV PATH="/venv/bin:$PATH"
+
+
+
+WORKDIR /workspace
+VOlUME ["/workspace"]
+
+
+CMD ["/workspace/build/release/mandelbrot_par && python3 /workspace/plot2.py"]
