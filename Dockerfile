@@ -1,0 +1,27 @@
+# Use the official Ubuntu 24.04 image
+FROM ubuntu:24.04
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    cmake \
+    g++ \
+    make \
+    libtbb-dev \
+    libsfml-dev \
+    imagemagick \
+    libpng-dev \
+    libjpeg-dev \
+    libgif-dev \
+    python3 \
+    python3-venv \
+    python3-pip \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a virtual environment and install required Python libraries
+RUN python3 -m venv /venv && \
+    /venv/bin/pip install --upgrade pip && \
+    /venv/bin/pip install plotly
+
+# Add the virtual environment's bin directory to PATH
+ENV PATH="/venv/bin:$PATH"
